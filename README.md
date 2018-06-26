@@ -7,8 +7,6 @@ Here is the reason why we do it
 - UnitTest
 - Productivity
 - Good Communication in team
-
-To make the code more readable, reliable and clean. 
 # Table of Contents
 - [Coding Conventions](#coding-conventions)
     - [Formatting](#formatting)
