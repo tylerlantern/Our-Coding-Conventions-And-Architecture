@@ -1,21 +1,58 @@
 # Our-Coding-Conventions-And-Architecture
-Here is a style guide coding for my team. To make the code more readable, reliable and clean.
+***Thank to*** https://github.com/eure/swift-style-guide. Here is a style guide coding for my team.  
+Here is the reason why we do it
+- Clean
+- Maintainance
+- Hotfix
+- UnitTest
+- Productivity
+- Good Communication in team
+
+To make the code more readable, reliable and clean. 
 # Table of Contents
-- [Styles and Conventions](#styles-and-conventions)
+- [Coding Conventions](#coding-conventions)
     - [Formatting](#formatting)
-        - [Semicolons (`;`)](#semicolons)
-        - [Whitespaces](#whitespaces)
-        - [Commas (`,`)](#commas)
-        - [Colons (`:`)](#colons)
-        - [Braces (`{}`)](#braces)
+        - [Semicolons (`;`)](#semicolons) `//TODO`
+        - [Whitespaces](#whitespaces) `//TODO`
+        - [Commas (`,`)](#commas) `//TODO`
+        - [Colons (`:`)](#colons) `//TODO`
+        - [Braces (`{}`)](#braces) `//TODO`
         - [Control Flow Statements](#control-flow-statements)
     - [Naming](#naming)
         - [Capitalization (`class`,`struct`,`enum`,`protocol`)](#capitalization)
         - [Properties](#properties)
         - [Outlet](#outlet)
         - [Computed Properties](#computed-properties)
+- [Architecture](#architecture)
+    - [MVVM](#mvvm)
+    - [API Network Intregration](#apinetworkintregration) `//TODO`
+    - [Model](#model)
+## Formatting
+### Control flow statements
+#### `if`, `else`, `switch`, `do`, `catch`, `repeat`, `guard`, `for`, `while`, and `defer` statements should be left-aligned with their respective close braces (`}`).
+<table>
+<tr><th>OK</th><th>NG</th></tr>
+<tr>
+<td><pre lang=swift>
+if array.isEmpty {
+    // ...
+}
+else {
+    // ...
+}
+</pre></td>
+<td><pre lang=swift>
 
-# Naming 
+if array.isEmpty {
+    // ...
+} else {
+    // ...
+}
+</pre></td>
+</tr>
+</table> 
+
+## Naming 
 ### Capitalization
 #### Type names (`class`, `struct`, `enum`, `protocol`) should be in *UpperCamelCase*. 
 <table>
@@ -23,7 +60,6 @@ Here is a style guide coding for my team. To make the code more readable, reliab
 <tr>
 <td><pre lang=swift>
 class ImageButton {
-
     enum ButtonState {
         // ...
     }
@@ -31,7 +67,6 @@ class ImageButton {
 </pre></td>
 <td><pre lang=swift>
 class image_button {
-
     enum buttonState {
         // ...
     }
@@ -62,16 +97,13 @@ var right_icon = "pencil"
 class ButtonWithRightIcon { 
     var _rightIcon : Float = 0.0
     var rightIcon: Float {
-
-    get {
-    
-        return _rightIcon
+        get {
+            return _rightIcon
+        }
+        set {
+            _rightIcon = newValue
+        }
     }
-    set {
-    
-        _rightIcon = newValue
-    }
-}
 }
 
 </pre></td>
@@ -79,23 +111,20 @@ class ButtonWithRightIcon {
 class ButtonWithRightIcon {  
     var RightIcon : Float = 0.0
     var right_icon: Float {
-
-    get
-    {
-        return RightIcon
+        get{
+            return RightIcon
+        }
+        set{
+            RightIcon = newValue
+        }
     }
-    set
-    {
-        RightIcon = newValue
-    }
-}
 }
 </pre></td>
 </tr>
 </table>
 
 ### Outlet
-We name an outlet according to the number of vowels. Get only the first characters of each vowels afther `UI` prefix and make them concatenating. For example  
+We name an outlet according to the number of vowels. Get only the first characters of each vowels after `UI` prefix and make them concatenating. For example  
 - UILabel = lb
 - UIImageView = imv
 - UIButton = bt
@@ -113,6 +142,65 @@ and so on
 </pre></td>
 <td><pre lang=swift>
 @IBOutlet dynamic var profileImageZView: UIImageView!
+</pre></td>
+</tr>
+</table>  
+  
+## Architecture
+### MVVM
+We create an instance of viewmodel on lazy property for convinient usage and set delegate back to its `ViewController`. ViewModel does call delegate upon on its need of the ViewController. ViewModel can emit somekind of data or an success/failure data of API.
+```swift
+class ExampleViewController : UIViewController {
+    lazy var viewModel = ExampleViewModel(instance : self)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel.requestAsynchronousFromNetwork()
+    }
+}
+extension ExampleViewController : ExampleViewDelegate {
+    func didFinishInitilization(){
+        print("didFinishInitilization")
+    }
+}
+protocol ExampleViewDelegate : AnyObject {
+    func didFinishInitilization()
+    func didFinishRequestAsynchronousFromNetwork(isFinish : Bool)
+}
+class ExampleViewModel {
+    weak var delegate :  ExampleViewDelegate
+    var models = [String]()
+    init(instance : ExampleViewDelegate) {
+        self.delegate = instance
+        
+    }
+    func requestAsynchronousFromNetwork(){
+        API.request ({ isFinish in 
+            delegate.didFinishRequestAsynchronousFromNetwork(isFinish : isFinish)
+        })
+    }
+    func initilization(){
+        models.append("1")
+        models.append("2")
+        models.append("3")
+        models.append("4")
+        delegate.didFinishInitilization()
+    }
+} 
+```
+
+### Model
+<table>
+<tr><th>OK</th><th>NO</th></tr>
+<tr>
+<td><pre lang=swift>
+class ProfileModel {
+    // ...
+}
+</pre></td>
+<td><pre lang=swift>
+class Profile {
+    // ...
+}
 </pre></td>
 </tr>
 </table>
