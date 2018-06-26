@@ -136,7 +136,7 @@ and so on
 <tr><th>OK</th><th>NO</th></tr>
 <tr>
 <td><pre lang=swift>
-@IBOutlet dynamic var iv_profile: UIImageView!
+@IBOutlet dynamic var imv_profile: UIImageView!
 </pre></td>
 <td><pre lang=swift>
 @IBOutlet dynamic var profileImageZView: UIImageView!
