@@ -27,7 +27,7 @@ Here is the reason why we do it
     - [Model](#model)
 ## Formatting
 ### Whitespaces 
-<!-- <table>
+<table>
 <tr><th>OK</th></tr>
 <tr>
 <td><pre lang=swift>
@@ -43,11 +43,33 @@ class BaseViewController: UIViewController {
 }
 </pre>
 </tr>
-</table>  -->
-| Left-aligned | Center-aligned | Right-aligned |
-| :---         |     :---:      |          ---: |
-| git status   | git status     | git status    |
-| git diff     | git diff       | git diff      |
+</table> 
+
+### Colons  
+#### Colons (`:`)  used to indicate type should have one space after it and should have no whitespace before it.
+<table>
+<tr><th>OK</th><th>NG</th></tr>
+<tr>
+<td><pre lang=swift>
+func createItem(item: Item)
+</pre></td>
+<td><pre lang=swift>
+func createItem(item:Item)
+func createItem(item :Item)
+func createItem(item : Item)
+</pre></td>
+</tr>
+<tr>
+<td><pre lang=swift>
+var item: Item? = nil
+</pre></td>
+<td><pre lang=swift>
+var item:Item? = nil
+var item :Item? = nil
+var item : Item? = nil
+</pre></td>
+</tr>
+</table>
 
 ### Control flow statements
 #### `if`, `else`, `switch`, `do`, `catch`, `repeat`, `guard`, `for`, `while`, and `defer` statements should be left-aligned with their respective close braces (`}`).
