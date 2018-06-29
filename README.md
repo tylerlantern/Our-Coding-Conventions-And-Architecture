@@ -11,9 +11,9 @@ Here is the reason why we do it
 - [Coding Conventions](#coding-conventions)
     - [Formatting](#formatting)
         - [Semicolons (`;`)](#semicolons) `//TODO`
-        - [Whitespaces](#whitespaces) `//TODO`
+        - [Whitespaces](#whitespaces)
         - [Commas (`,`)](#commas) `//TODO`
-        - [Colons (`:`)](#colons) `//TODO`
+        - [Colons (`:`)](#colons)
         - [Braces (`{}`)](#braces) `//TODO`
         - [Control Flow Statements](#control-flow-statements)
     - [Naming](#naming)
