@@ -32,14 +32,15 @@ Here is the reason why we do it
 <tr>
 <td><pre lang=swift>
 class BaseViewController: UIViewController {
-    // ...
-    override viewDidLoad() {
-        // ...
-    }
-
-    override viewWillAppear(animated: Bool) {
-        // ...
-    }
+        //<-- new line
+        override viewDidLoad() {
+            // ...
+        }
+        //<-- new line
+        override viewWillAppear(animated: Bool) {
+            // ...
+        }
+        //<-- new line
 }
 </pre>
 </tr>
