@@ -26,6 +26,29 @@ Here is the reason why we do it
     - [API Network Intregration](#apinetworkintregration) `//TODO`
     - [Model](#model)
 ## Formatting
+### Whitespaces 
+<!-- <table>
+<tr><th>OK</th></tr>
+<tr>
+<td><pre lang=swift>
+class BaseViewController: UIViewController {
+    // ...
+    override viewDidLoad() {
+        // ...
+    }
+
+    override viewWillAppear(animated: Bool) {
+        // ...
+    }
+}
+</pre>
+</tr>
+</table>  -->
+| Left-aligned | Center-aligned | Right-aligned |
+| :---         |     :---:      |          ---: |
+| git status   | git status     | git status    |
+| git diff     | git diff       | git diff      |
+
 ### Control flow statements
 #### `if`, `else`, `switch`, `do`, `catch`, `repeat`, `guard`, `for`, `while`, and `defer` statements should be left-aligned with their respective close braces (`}`).
 <table>
