@@ -77,19 +77,23 @@ var item : Item? = nil
 <table>
 <tr><th>OK</th><th>NG</th></tr>
 <tr>
-<td><pre lang=swift>
+<td valign="top"><pre lang=swift>
 if array.isEmpty {
     // ...
-}
-else {
+} else if array.count > 2 {
+    // ...
+} else {
     // ...
 }
 </pre></td>
-<td><pre lang=swift>
-
+<td valign="top"><pre lang=swift>
 if array.isEmpty {
     // ...
-} else {
+}
+else if array.count > 2 {
+    // ...
+}
+else {
     // ...
 }
 </pre></td>
