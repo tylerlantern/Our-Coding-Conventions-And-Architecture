@@ -22,7 +22,7 @@ Here is the reason why we do it
         - [Outlet](#outlet)
         - [Computed Properties](#computed-properties)
 - [Architecture](#architecture)
-    - [MVVM](#mvvm) `//TODO`
+    - [MVVM](#mvvm)
         - [Submiting Data](#submitting-data)
     - [API Network Intregration](#apinetworkintregration) `//TODO`
     - [Model](#model)
@@ -46,6 +46,38 @@ class BaseViewController: UIViewController {
 </pre>
 </tr>
 </table> 
+
+### Commas
+#### Commas (`,`) should have no whitespace before it, and should have either one space or one newline after.
+<table>
+<tr><th>OK</th><th>NG</th></tr>
+<tr>
+<td><pre lang=swift>
+let array = [1, 2, 3]
+</pre></td>
+<td><pre lang=swift>
+let array = [1,2,3]
+let array = [1 ,2 ,3]
+let array = [1 , 2 , 3]
+</pre></td>
+</tr>
+<tr>
+<td><pre lang=swift>
+self.presentViewController(
+    controller,
+    animated: true,
+    completion: nil
+)
+</pre></td>
+<td><pre lang=swift>
+self.presentViewController(
+    controller ,
+    animated: true,completion: nil
+)
+</pre></td>
+</tr>
+</table>
+
 
 ### Colons  
 #### Colons (`:`)  used to indicate type should have one space after it and should have no whitespace before it.
@@ -217,7 +249,7 @@ protocol ExampleViewDelegate : AnyObject {
     func didFinishRequestAsynchronousFromNetwork(isFinish : Bool)
 }
 class ExampleViewModel {
-    weak var delegate :  ExampleViewDelegate
+    weak var delegate :  ExampleViewDelegate!
     var models = [String]()
     var email: String = ""
     var fullName: String = ""
@@ -258,7 +290,7 @@ class ExampleViewModel {
 ```
 #### Submitting Data
 ##### Option 1 : Simple
-I extends UITextField class to handle validation of empty/nil string by itself. Here is my custom textfield ([BHTextField]()) which i have been using for several projects. Have a look for better understading.
+I extends UITextField class to handle validation of empty/nil string by itself. Here is my custom textfield ([BHTextField](https://github.com/tylerlantern/BHTextField)) which i have been using for several projects. Have a look for better understading.
 ```swift
 class ExampleViewController: UIViewController {
     @IBOutlet weak var tb_email: UITextField!
@@ -284,7 +316,7 @@ protocol ExampleViewDelegate: AnyObject {
     func didFinishSubmitting(isSuccess: Bool)
 }
 class ExampleViewModel {
-    weak var delegate: ExampleViewDelegate
+    weak var delegate: ExampleViewDelegate!
     var models = [String]()
     var email: String = ""
     var fullName: String = ""
