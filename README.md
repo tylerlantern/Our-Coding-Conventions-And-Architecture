@@ -19,6 +19,7 @@ Here is the reason why we do it
         - [Capitalization (`class`,`struct`,`enum`,`protocol`)](#capitalization)
         - [Properties](#properties)
         - [Outlet](#outlet)
+        - [Action](#action)
         - [Computed Properties](#computed-properties)
 - [Architecture](#architecture)
     - [MVVM](#mvvm)
@@ -223,7 +224,20 @@ and so on
 </pre></td>
 </tr>
 </table>  
-  
+
+### Action
+<table>
+<tr><th>OK</th></tr>
+<tr>
+<td><pre lang=swift>
+@IBAction func action_goNextPage(_ sender: Any) {
+        //..
+}
+</pre></td>
+
+</tr>
+</table>  
+
 ## Architecture
 ### MVVM
 We create an instance of viewmodel on lazy property for convinient usage and set delegate back to its `ViewController`. ViewModel does call delegate upon on its need of the ViewController. ViewModel can emit somekind of data or an success/failure data of API.
