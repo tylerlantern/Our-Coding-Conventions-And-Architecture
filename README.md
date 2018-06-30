@@ -10,7 +10,6 @@ Here is the reason why we do it
 # Table of Contents
 - [Coding Conventions](#coding-conventions)
     - [Formatting](#formatting)
-        - [Semicolons (`;`)](#semicolons) `//TODO`
         - [Whitespaces](#whitespaces)
         - [Commas (`,`)](#commas)
         - [Colons (`:`)](#colons)
