@@ -22,7 +22,8 @@ Here is the reason why we do it
         - [Outlet](#outlet)
         - [Computed Properties](#computed-properties)
 - [Architecture](#architecture)
-    - [MVVM](#mvvm)
+    - [MVVM](#mvvm) `//TODO`
+        - [Submiting Data](#submitting-data)
     - [API Network Intregration](#apinetworkintregration) `//TODO`
     - [Model](#model)
 ## Formatting
@@ -200,6 +201,7 @@ We create an instance of viewmodel on lazy property for convinient usage and set
 ```swift
 class ExampleViewController : UIViewController {
     lazy var viewModel = ExampleViewModel(instance : self)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.requestAsynchronousFromNetwork()
@@ -217,15 +219,19 @@ protocol ExampleViewDelegate : AnyObject {
 class ExampleViewModel {
     weak var delegate :  ExampleViewDelegate
     var models = [String]()
-    init(instance : ExampleViewDelegate) {
+    var email: String = ""
+    var fullName: String = ""
+    init(instance: ExampleViewDelegate) {
         self.delegate = instance
         
     }
+
     func requestAsynchronousFromNetwork(){
         API.request ({ isFinish in 
             delegate.didFinishRequestAsynchronousFromNetwork(isFinish : isFinish)
         })
     }
+
     func initilization(){
         models.append("1")
         models.append("2")
@@ -233,8 +239,93 @@ class ExampleViewModel {
         models.append("4")
         delegate.didFinishInitilization()
     }
+
+    func isvalidated(email : String?, fullName : String?) -> Bool{
+        if email.isNilOrEmpty() ||  fullName.isNilOrEmpty {
+            return false
+        }
+        self.email = email!
+        self.fullName = fullName!
+        return true
+    }
+
+    func submit(){
+        API.register(email: self.email, fullname: self.fullName ){
+            //...
+        }
+    }
 } 
 ```
+#### Submitting Data
+##### Option 1 : Simple
+I extends UITextField class to handle validation of empty/nil string by itself. Here is my custom textfield ([BHTextField]()) which i have been using for several projects. Have a look for better understading.
+```swift
+class ExampleViewController: UIViewController {
+    @IBOutlet weak var tb_email: UITextField!
+    @IBOutlet weak var tb_fullName: UITextField!
+    lazy var viewModel = ExampleViewModel(instance : self)
+
+    @IBAction func action_submit(_ sender: Any) {
+       guard viewmodel.isvalidated( email: self.tb_email.text, fullName: self.tb_fullName.text) else {
+           tb_email.showErrorOnRequiredField()
+           tb_fullName.showErrorOnRequiredField()
+           return
+       }
+        viewModel.submit()
+    }
+
+}
+extension ExampleViewController: ExampleViewDelegate {
+    func didFinishSubmitting(isSuccess: Bool){
+        //..
+    }
+}
+protocol ExampleViewDelegate: AnyObject {
+    func didFinishSubmitting(isSuccess: Bool)
+}
+class ExampleViewModel {
+    weak var delegate: ExampleViewDelegate
+    var models = [String]()
+    var email: String = ""
+    var fullName: String = ""
+    init(instance: ExampleViewDelegate) {
+        self.delegate = instance
+        
+    }
+
+    func requestAsynchronousFromNetwork(){
+        API.request ({ isFinish in 
+            delegate.didFinishRequestAsynchronousFromNetwork(isFinish : isFinish)
+        })
+    }
+
+    func initilization(){
+        models.append("1")
+        models.append("2")
+        models.append("3")
+        models.append("4")
+        delegate.didFinishInitilization()
+    }
+
+    func isvalidated(email : String?, fullName : String?) -> Bool{
+        if email.isNilOrEmpty() ||  fullName.isNilOrEmpty {
+            return false
+        }
+        self.email = email!
+        self.fullName = fullName!
+        return true
+    }
+
+    func submit(){
+        API.register(email: self.email, fullname: self.fullName ){ isSuccess in
+            delegate.didFinishSubmitting(isSuccess: isSuccess)
+        }
+    }
+
+} 
+```
+##### Option 2 : Two Way Biding
+//TODO
 
 ### Model
 <table>
