@@ -12,7 +12,7 @@ Here is the reason why we do it
     - [Formatting](#formatting)
         - [Semicolons (`;`)](#semicolons) `//TODO`
         - [Whitespaces](#whitespaces)
-        - [Commas (`,`)](#commas) `//TODO`
+        - [Commas (`,`)](#commas)
         - [Colons (`:`)](#colons)
         - [Braces (`{}`)](#braces) `//TODO`
         - [Control Flow Statements](#control-flow-statements)
@@ -320,6 +320,7 @@ class ExampleViewModel {
     var models = [String]()
     var email: String = ""
     var fullName: String = ""
+
     init(instance: ExampleViewDelegate) {
         self.delegate = instance
         
