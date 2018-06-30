@@ -356,7 +356,7 @@ class ExampleViewModel {
 
 } 
 ```
-##### Option 2 : Two Way Biding
+##### Option 2 : Two Way Data Binding
 //TODO
 
 ### Model
