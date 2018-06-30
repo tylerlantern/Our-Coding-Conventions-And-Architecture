@@ -179,8 +179,7 @@ class ButtonWithRightIcon {
     var rightIcon: Float {
         get {
             return _rightIcon
-        }
-        set {
+        }set {
             _rightIcon = newValue
         }
     }
@@ -193,8 +192,7 @@ class ButtonWithRightIcon {
     var right_icon: Float {
         get{
             return RightIcon
-        }
-        set{
+        }set{
             RightIcon = newValue
         }
     }
