@@ -399,8 +399,8 @@ lb_some.text = LocalizationManager.currentLanguage == .th ? someTH : someEN
 
 ```swift
 if (LocalizationManager.currentLanguage == .th) {
-lb_some.text = someTH
+    lb_some.text = someTH
 } else {
-lb_some.text = someEN
+    lb_some.text = someEN
 }
 ```
