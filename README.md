@@ -24,6 +24,8 @@ Here is the reason why we do it
 - [Architecture](#architecture)
     - [MVVM](#mvvm)
         - [Submiting Data](#submitting-data)
+            - [Simple](#simple)
+            - [Two Way Data Binding](#two-way-data-binding)
     - [API Network Intregration](#apinetworkintregration) `//TODO`
     - [Model](#model)
 ## Formatting
