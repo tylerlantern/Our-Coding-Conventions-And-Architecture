@@ -26,6 +26,8 @@ Here is the reason why we do it
         - [Submiting Data](#submitting-data)
     - [API Network Intregration](#apinetworkintregration) `//TODO`
     - [Model](#model)
+- [Localization](#localization)
+    - [Conventions](#localization-conventions)
 ## Formatting
 ### Whitespaces 
 <table>
@@ -387,3 +389,18 @@ class Profile {
 </pre></td>
 </tr>
 </table>
+
+## Localization
+### Localization Conventions
+Check against TH language first
+```swift
+lb_some.text = LocalizationManager.currentLanguage == .th ? someTH : someEN
+```
+
+```swift
+if (LocalizationManager.currentLanguage == .th) {
+    lb_some.text = someTH
+} else {
+    lb_some.text = someEN
+}
+```
