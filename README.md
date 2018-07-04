@@ -401,7 +401,9 @@ enum Language: String {
 var LocalizationManager = LocalizationManagerInstance.center
 
 class LocalizationManagerInstance: NSObject {
-
+    
+    static var center = LocalizationManagerInstance()
+    
     var currentLanguage: Language {
         return ...
     }
