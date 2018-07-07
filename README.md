@@ -28,6 +28,7 @@ Here is the reason why we do it
             - [Two Way Data Binding](#two-way-data-binding)
     - [API Network Intregration](#apinetworkintregration) `//TODO`
     - [Model](#model)
+    - [Binding Datasource](#binding-datasource)
 - [Localization](#localization)
     - [Conventions](#localization-conventions)
 ## Formatting
@@ -392,6 +393,74 @@ class Profile {
 </tr>
 </table>
 
+### Binding Datasource
+```swift
+class ExampleViewController: UIViewController {
+    @IBOutlet weak var tb_email: UITextField!
+    @IBOutlet weak var tb_fullName: UITextField!
+    lazy var viewModel = ExampleViewModel(instance : self)
+    @IBOutlet weak var collectionView: UICollectionView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView.dataSource = self
+    }
+    
+}
+extension ExampleViewController : UICollectionViewDataSource {
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return viewModel.models.count == 0 ? 0 : 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.models.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        viewModel.binding(cell, indexPath: indexPath)
+        return cell
+    }
+
+}
+extension ExampleViewController: ExampleViewDelegate {
+    func didFinishRequestAsynchronousFromNetwork(isSuccess: Bool){
+        //..
+    }
+}
+protocol ExampleViewDelegate: AnyObject {
+    func didFinishRequestAsynchronousFromNetwork(isSuccess: Bool)
+}
+class ExampleViewModel {
+    weak var delegate: ExampleViewDelegate!
+    var models = [String]()
+    var email: String = ""
+    var fullName: String = ""
+
+    init(instance: ExampleViewDelegate) {
+        self.delegate = instance
+    }
+
+    func requestAsynchronousFromNetwork(){
+        API.request ({ isFinish in 
+            delegate.didFinishRequestAsynchronousFromNetwork(isFinish : isFinish)
+        })
+    }
+
+    func initilization(){
+        models.append("1")
+        models.append("2")
+        models.append("3")
+        models.append("4")
+        delegate.didFinishInitilization()
+    }
+
+    func biding(_ cell : UICollectionViewCell,indexPath : IndexPath){
+        //..
+    }
+
+} 
+```
 ## Localization
 ### Localization Conventions
 Check against TH language first
