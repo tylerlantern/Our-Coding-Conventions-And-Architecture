@@ -404,6 +404,7 @@ class ExampleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
+        viewModel.requestAsynchronousFromNetwork()
     }
     
 }
