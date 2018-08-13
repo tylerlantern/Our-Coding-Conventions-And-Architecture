@@ -466,13 +466,31 @@ class ExampleViewModel {
 ### Localization Conventions
 Check against TH language first
 ```swift
-lb_some.text = LocalizationManager.currentLanguage == .th ? someTH : someEN
+enum Language: String {
+    case en = "en", th = "th"
+}
+
+var LocalizationManager = LocalizationManagerInstance.center
+
+class LocalizationManagerInstance: NSObject {
+    
+    static var center = LocalizationManagerInstance()
+    
+    var currentLanguage: Language {
+        return ...
+    }
+    
+}
+```
+
+```swift
+lb_some.text = LocalizationManager.currentLanguage == .th ? "TH" : "EN"
 ```
 
 ```swift
 if (LocalizationManager.currentLanguage == .th) {
-    lb_some.text = someTH
+    lb_some.text = "TH"
 } else {
-    lb_some.text = someEN
+    lb_some.text = "EN"
 }
 ```
