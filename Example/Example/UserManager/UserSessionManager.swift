@@ -1,7 +1,5 @@
 //
 //  UserSessionManager.swift
-//  TLT
-//
 //  Created by Santi Ma-Oun on 28/5/2561 BE.
 //  Copyright © 2561 Toyata. All rights reserved.
 //

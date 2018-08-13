@@ -1,7 +1,5 @@
 //
 //  BiometricManager.swift
-//  TLT
-//
 //  Created by Nattapong Unaregul on 19/4/18.
 //  Copyright © 2018 Toyata. All rights reserved.
 //

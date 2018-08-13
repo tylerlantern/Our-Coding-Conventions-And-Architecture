@@ -1,7 +1,5 @@
 //
 //  User.swift
-//  TLT
-//
 //  Created by Pattadon on 1/22/2561 BE.
 //  Copyright © 2561 Toyata. All rights reserved.
 //

@@ -1,7 +1,5 @@
 //
 //  AuthenticationManager.swift
-//  TLT
-//
 //  Created by Nattapong Unaregul on 25/4/18.
 //  Copyright © 2018 Toyata. All rights reserved.
 //

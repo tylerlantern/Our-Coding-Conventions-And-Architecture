@@ -1,7 +1,5 @@
 //
 //  KeychainAdapter.swift
-//  TLT
-//
 //  Created by Nattapong Unaregul on 2/3/18.
 //  Copyright © 2018 Toyata. All rights reserved.
 //
